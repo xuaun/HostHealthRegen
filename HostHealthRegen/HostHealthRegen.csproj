@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+
+        <AssemblyName>HostHealthRegen</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <FileVersion>1.0.0.0</FileVersion>
+        <Version>1.0.0</Version>
+        <Authors>Xuaun</Authors>
+        <Product>HostHealthRegen</Product>
+        <Description>Host-side passive health regeneration for R.E.P.O.</Description>
+
+        <DebugType>portable</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <RepoPath Condition="'$(RepoPath)' == ''">$(REPO_MANAGED_PATH)</RepoPath>
+        <BepInExPath Condition="'$(BepInExPath)' == ''">$(BEPINEX_CORE_PATH)</BepInExPath>
+    </PropertyGroup>
+
+    <Target Name="ValidateReferencePaths" BeforeTargets="ResolveReferences">
+        <Error Condition="'$(RepoPath)' == ''" Text="RepoPath is not set. Set RepoPath or REPO_MANAGED_PATH to your REPO_Data\\Managed directory." />
+        <Error Condition="'$(BepInExPath)' == ''" Text="BepInExPath is not set. Set BepInExPath or BEPINEX_CORE_PATH to your BepInEx core directory." />
+    </Target>
+
+    <ItemGroup>
+        <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.3" PrivateAssets="all" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="$(RepoPath)UnityEngine.dll" Private="false" />
+        <Reference Include="$(RepoPath)UnityEngine.CoreModule.dll" Private="false" />
+        <Reference Include="$(RepoPath)Assembly-CSharp.dll" Publicize="true" Private="false" />
+        <Reference Include="$(RepoPath)PhotonUnityNetworking.dll" Private="false" />
+        <Reference Include="$(RepoPath)PhotonRealtime.dll" Private="false" />
+        <Reference Include="$(BepInExPath)BepInEx.dll" Private="false" />
+    </ItemGroup>
+
+</Project>

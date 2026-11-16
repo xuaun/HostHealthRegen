@@ -1,0 +1,70 @@
+# C# and .NET specific ignores
+## Build outputs
+[Bb]in/
+[Oo]bj/
+[Tt]emp/
+[Ll]ogs/
+[Pp]ackages/
+
+## IDE and editor files
+.vs/
+.vscode/
+.idea/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.sln.docstates
+*.sln.DotSettings.user
+
+## Build artifacts
+*.dll
+*.exe
+*.pdb
+*.dll.config
+*.cache
+*.tmp
+
+# Unity specific ignores (if applicable)
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+UserSettings/
+
+# Other ignored files
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.scc
+*.swp
+
+# NuGet packages
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# VS launch settings
+.launchSettings.json
+
+# Rider
+.serena
+.claude
+.junie
+*.sln.iml
+**/bin/
+**/obj/
+
+# Local dev files not shipped with the mod (manual test plans, scratch notes, etc.)
+/.local/
+
+# Local build paths — machine-specific, not committed
+Directory.Build.props
+
+# Local assistant notes
+CLAUDE.md
