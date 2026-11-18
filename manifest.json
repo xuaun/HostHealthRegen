@@ -1,6 +1,6 @@
 {
     "name": "HostHealthRegen",
-    "version_number": "1.0.0",
+    "version_number": "1.0.1",
     "website_url": "https://github.com/xuaun/HostHealthRegen",
     "description": "Passive health regeneration run by the host. Only the host needs the mod; scales with health upgrades and is fully configurable.",
     "dependencies": [

@@ -11,7 +11,10 @@ public class Plugin : BaseUnityPlugin
 {
     public const string Guid = "Xuaun.HostHealthRegen";
     public const string Name = "HostHealthRegen";
-    public const string Version = "1.0.0";
+    public const string Version = "1.0.1";
+
+    // REPOConfig 1.3.0 tag: the in-game slider moves in whole seconds.
+    private const string StepOfOneSecond = "REPOConfigStep=1";
 
     // How often the damage watch and the tick clock run.
     private const float PollSeconds = 0.25f;
@@ -46,13 +49,13 @@ public class Plugin : BaseUnityPlugin
         _enabled = Config.Bind("General", "Enabled", true,
             "Turns the regeneration on or off.");
         _interval = Config.Bind("Regeneration", "IntervalSeconds", 20f,
-            new ConfigDescription("Seconds between regeneration ticks.", new AcceptableValueRange<float>(1f, 300f)));
+            new ConfigDescription("Seconds between regeneration ticks.", new AcceptableValueRange<float>(1f, 300f), StepOfOneSecond));
         _baseAmount = Config.Bind("Regeneration", "BaseAmount", 1,
             new ConfigDescription("Health restored per tick, before the upgrade bonus.", new AcceptableValueRange<int>(0, 50)));
         _bonusPerUpgrade = Config.Bind("Regeneration", "BonusPerHealthUpgrade", 1,
             new ConfigDescription("Extra health per tick for each health upgrade the player owns. 0 gives everyone the same amount.", new AcceptableValueRange<int>(0, 10)));
         _delayAfterDamage = Config.Bind("Regeneration", "DelayAfterDamageSeconds", 0f,
-            new ConfigDescription("A player who took damage is skipped until this many seconds have passed. 0 turns it off.", new AcceptableValueRange<float>(0f, 120f)));
+            new ConfigDescription("A player who took damage is skipped until this many seconds have passed. 0 turns it off.", new AcceptableValueRange<float>(0f, 120f), StepOfOneSecond));
         _slowerWithMorePlayers = Config.Bind("Regeneration", "SlowerWithMorePlayers", false,
             "Multiplies the interval by the number of living players.");
         _maxHealthPercent = Config.Bind("Regeneration", "MaxHealthPercent", 100,

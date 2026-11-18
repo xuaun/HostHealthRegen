@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+- With REPOConfig 1.3.0 or newer, the interval and delay sliders move in whole seconds.
+
 ## 1.0.0
 
 - First release, for game v0.5.1.
